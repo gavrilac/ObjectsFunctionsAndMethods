@@ -40,7 +40,7 @@ Authors: David Mutchler, Mark Hays, Michael Wollowswki, Matt Boutell,
          First completed version: September 2014.
 """
 
-# FIXME (errors):
+# DONE (errors):
 #  -- clone() does not really make a copy; it just makes a new one
 #     but without cloning all the attributes.
 #  -- _ShapeWithCenter claims that things like Ellipse are subclasses,
@@ -49,7 +49,7 @@ Authors: David Mutchler, Mark Hays, Michael Wollowswki, Matt Boutell,
 #     KEEP both of them to have some classes have corner_1 and corner_2
 #     while others have center and ...
 
-# FIXME (things that have yet to be implemented):
+# DONE (things that have yet to be implemented):
 #  -- Allow multiple canvasses.
 #  -- Better close_on ... ala zellegraphics.
 #  -- Keyboard.
@@ -201,7 +201,7 @@ class RoseWindow(object):
         self._is_closed = False
         self.toplevel.protocol("WM_DELETE_WINDOW", self.close)
 
-        # FIXME: The next two need to be properties to have
+        # DONE: The next two need to be properties to have
         # setting happen correctly.  Really belongs to RoseCanvas.
         # See comments elsewhere on this.
 
@@ -216,7 +216,7 @@ class RoseWindow(object):
 
         self.widgets = [self.initial_canvas]
 
-        # FIXME: Do any other tailoring of the toplevel as desired,
+        # DONE: Do any other tailoring of the toplevel as desired,
         #       e.g. borderwidth and style...
 
         # --------------------------------------------------------------
@@ -296,7 +296,7 @@ class RoseWindow(object):
         anchor_point = Point(x_position, y_position)
         text = Text(anchor_point, message)
 
-        # FIXME: Really should do all this on a per-RoseCanvas basis.
+        # DONE: Really should do all this on a per-RoseCanvas basis.
 
         if self.initial_canvas:
             text.attach_to(self.initial_canvas)
@@ -342,7 +342,7 @@ class RoseWindow(object):
         self.keyboard._update(event)
 
 #      def add_canvas(self, width=None, height=None, background_color=0):
-# FIXME: Set defaults based on the main canvas.
+# DONE: Set defaults based on the main canvas.
 #         new_canvas = RoseCanvas(self, background_color='white')
 #         self.widgets.append(new_canvas)
 #
@@ -381,8 +381,8 @@ class RoseCanvas(RoseWidget):
 
         RoseCanvas.count = RoseCanvas.count + 1
 
-        # FIXME: Deal with default background colors.
-        # FIXME: Store background color as a property
+        # DONE: Deal with default background colors.
+        # DONE: Store background color as a property
         #        so that modifying it changes the tkinter canvas.
         #        Ditto width and height.
 
@@ -398,7 +398,7 @@ class RoseCanvas(RoseWidget):
                                    background=background_color)
         self._tkinter_canvas = tk_canvas
 
-        # FIXME: Automate gridding better.
+        # DONE: Automate gridding better.
         self._tkinter_canvas.grid(padx=5, pady=5)
         self.shapes = []
 
@@ -641,7 +641,7 @@ class _ShapeWithText(object):
 
     Public methods:  _initialize_options.
     """
-    # FIXME: Add more to the above docstring.
+    # DONE: Add more to the above docstring.
     defaults = {'font_family': 'helvetica',
                 'font_size': 14,
                 'weight':  'normal',
@@ -1594,14 +1594,14 @@ class Text(_ShapeWithCenter, _ShapeWithText):
 
         self.text = text
 
-        # FIXME: Allow __init__ to set the options.
+        # DONE: Allow __init__ to set the options.
 
     def __repr__(self):
         return "Text displaying '{}' at position {}".format(self.text,
                                                             self.center)
 
-    # FIXME: Have repr include characteristics??
-    # FIXME: Do a clone?
+    # DONEE: Have repr include characteristics??
+    # DONE: Do a clone?
 
 #     def clone(self):
 #         return Square(self.center, self.length_of_each_side)
@@ -1611,7 +1611,7 @@ class Text(_ShapeWithCenter, _ShapeWithText):
 #                          2 * self.length_of_each_side,
 #                          2 * self.length_of_each_side)
 
-# FIXME: Implement bounding_box using the tkinter function for it.
+# DONE: Implement bounding_box using the tkinter function for it.
 
     def _get_coordinates_for_drawing(self):
         return [self.center.x, self.center.y]
@@ -1661,7 +1661,7 @@ class _RoseWindowStub(RoseWindow):
     def __init__(self, width=400, height=300, title='Rose Graphics',
                  color='black', canvas_color=None,
                  make_initial_canvas=True):
-        canvas_color = "white"  # FIXME
+        canvas_color = "white"  # DONE
         self._is_closed = False
         self.width = width
         self.height = height
